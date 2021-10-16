@@ -7,6 +7,7 @@ import {
   HumidityComponent,
   LightComponent,
   MediaComponent,
+  StatusLightComponent
 } from "./components";
 import { makeStyles } from "@material-ui/core/styles";
 import { URL_API_BACKEND } from "./config";
@@ -31,7 +32,9 @@ function App() {
   const classes = useStyles();
   const [dataStation, setDataStation] = React.useState([]);
   const [dataStatus, setDataStatus] = React.useState([]);
+  const [dataStatusLight, setDataStatusLight] = React.useState([]);
   const [dataMedia, setDataMedia] = React.useState([]);
+
   const getDataStation = async () => {
     const response = await fetch(`${URL_API_BACKEND}/ultimodato`);
     const allData = await response.json();
@@ -42,6 +45,12 @@ function App() {
     const response = await fetch(`${URL_API_BACKEND}/statusultimodato`);
     const allData = await response.json();
     setDataStatus(allData);
+  };
+
+  const getDataStatusLight = async () => {
+    const response = await fetch(`${URL_API_BACKEND}/status`);
+    const allData = await response.json();
+    setDataStatusLight(allData);
   };
 
   const getDataMedia = async () => {
@@ -55,6 +64,7 @@ function App() {
       getDataStation().catch((error) => console.error(error));
       getDataStatus().catch((error) => console.error(error));
       getDataMedia().catch((error) => console.error(error));
+      getDataStatusLight().catch((error) => console.error(error));
     }, 30000);
 
     //console.log(dataStation.humedad);
@@ -138,6 +148,19 @@ function App() {
       </Grid>
       <Grid container spacing={3}>
         <MediaComponent media={dataMedia} />
+      </Grid>
+
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper>
+            <Typography component="h1" variant="h6" noWrap>
+              VARIABLE STATUS
+            </Typography>
+          </Paper>
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <StatusLightComponent media={dataStatusLight} />
       </Grid>
     </Container>
   );

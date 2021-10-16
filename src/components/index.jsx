@@ -4,3 +4,4 @@ export { SpeedmeterComponent } from "./Speedometer";
 export { HumidityComponent } from "./Humidity";
 export { LightComponent } from "./Light";
 export { MediaComponent } from "./Media";
+export { StatusLightComponent } from "./StatusLight"
