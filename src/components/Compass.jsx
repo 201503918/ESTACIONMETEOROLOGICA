@@ -48,7 +48,7 @@ export const CompassComponent = (value = 0) => {
       },
       {
         type: "Este",
-        value: 270,
+        value: 100,
       },
       {
         type: "Sur",
@@ -56,7 +56,7 @@ export const CompassComponent = (value = 0) => {
       },
       {
         type: "Oeste",
-        value: 100,
+        value: 270,
       },
     ]) ||
     (valor === 180 && [
@@ -84,7 +84,7 @@ export const CompassComponent = (value = 0) => {
       },
       {
         type: "Este",
-        value: 100,
+        value: 270,
       },
       {
         type: "Sur",
@@ -92,7 +92,7 @@ export const CompassComponent = (value = 0) => {
       },
       {
         type: "Oeste",
-        value: valor,
+        value: 100,
       },
     ]);
 
